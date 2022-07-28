@@ -21,19 +21,9 @@ public class CoinCollector : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        _gameField.FieldIsReady += OnFieldReady;
-    }
-
-    private void OnDisable()
-    {
-        _gameField.FieldIsReady -= OnFieldReady;
-    }
-
-    private void OnFieldReady(int coins)
-    {
-        _currentCoinAmountOnField = coins;
+       _currentCoinAmountOnField = _gameField.GetCoinsCount();
     }
 
     private void ShowScore(int score)

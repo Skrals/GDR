@@ -3,8 +3,6 @@ using UnityEngine.Events;
 
 public class GameField : MonoBehaviour
 {
-    public event UnityAction<int> FieldIsReady;
-
     [SerializeField] Interacted[] _interactedTemplates; //[0] - empty 
     [SerializeField] private int _xSize;
     [SerializeField] private int _ySize;
@@ -17,6 +15,10 @@ public class GameField : MonoBehaviour
     private int _spikeCounter;
     private Vector2 _positionOffset;
 
+    public int GetCoinsCount()
+    {
+        return _coinCount;
+    }
 
     private void Awake()
     {
@@ -58,8 +60,6 @@ public class GameField : MonoBehaviour
                 interacted.transform.parent = transform;
             }
         }
-
-        FieldIsReady?.Invoke(_coinCount);
     }
 
     private bool IsEqual(Interacted current)
